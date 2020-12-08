@@ -58,48 +58,42 @@ void print_bits(set_t *target)
 {
     int i;
     unsigned char   c;
-    int bit_set = 0;
+    char            buf[MAX_BUF_SIZE] = {0,};
+    int             index = 0;
 
     for (i = 0; i <= target->idx_last; i++) {
         c = target->bits[i];
         if (c & 0x01) {
-            bit_set = 1;
-            printf("%c", target->str[i*8]);
+            buf[index++] = target->str[i*8];
         }
         if (c & 0x02) {
-            bit_set = 1;
-            printf("%c", target->str[i*8 + 1]);
+            buf[index++] = target->str[i*8 + 1];
         }
         if (c & 0x04) {
-            bit_set = 1;
-            printf("%c", target->str[i*8 + 2]);
+            buf[index++] = target->str[i*8 + 2];
         }
         if (c & 0x08) {
-            bit_set = 1;
-            printf("%c", target->str[i*8 + 3]);
+            buf[index++] = target->str[i*8 + 3];
         }
         if (c & 0x10) {
-            bit_set = 1;
-            printf("%c", target->str[i*8 + 4]);
+            buf[index++] = target->str[i*8 + 4];
         }
         if (c & 0x20) {
-            bit_set = 1;
-            printf("%c", target->str[i*8 + 5]);
+            buf[index++] = target->str[i*8 + 5];
         }
         if (c & 0x40) {
-            bit_set = 1;
-            printf("%c", target->str[i*8 + 6]);
+            buf[index++] = target->str[i*8 + 6];
         }
         if (c & 0x80) {
-            bit_set = 1;
-            printf("%c", target->str[i*8 + 7]);
+            buf[index++] = target->str[i*8 + 7];
         }
     }
 
-    if (bit_set == 0) {
-        printf("empty");
+    if (index == 0) {
+        printf("empty\n");
+    } else {
+        printf("%s\n", buf);
     }
-    printf("\n");
 }
 
 
