@@ -8,7 +8,6 @@ struct set_s {
     int              len;
     char            *str;
     unsigned char    bits[64];
-    //char           (*bit_map)(set_t*)
     int            (*count_handler)(set_t*);
     void           (*print_handler)(set_t*);
 };

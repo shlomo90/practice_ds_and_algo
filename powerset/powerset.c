@@ -6,8 +6,6 @@
 #include "powerset.h"
 
 
-
-
 char* input_string(void)
 {
     char     buf[MAX_BUF_SIZE] = {0,};
@@ -41,18 +39,20 @@ int count_bits(set_t *target)
     // COUNT bit
     for(i = 0; i < 64; i++) {
         if (i == target->idx_last && target->bits[i] == target->bit_last) {
-            // Over
+            // Iteration Over
             return ERROR;
-        }
-        if (target->bits[i] == 0xff) {
-            target->bits[i] = 0;
         } else {
-            target->bits[i]++;
-            break;
+            if (target->bits[i] == 0xff) {
+                target->bits[i] = 0;
+            } else {
+                target->bits[i]++;
+                break;
+            }
         }
     }
     return OK;
 }
+
 
 void print_bits(set_t *target)
 {
